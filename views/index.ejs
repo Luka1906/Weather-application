@@ -1,0 +1,11 @@
+<%- include('partials/header.ejs') %>
+<header>
+  <h1>Weather App</h1>
+  <form action="/add" method="post">
+    <div class="input-area">
+      <input type="text" name="city" placeholder="Search by city" />
+      <button class="search-button" type="submit">Search</button>
+    </div>
+  </form>
+</header>
+<%- include('partials/footer.ejs') %>

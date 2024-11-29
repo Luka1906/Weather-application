@@ -3,9 +3,77 @@
   <h1>Weather App</h1>
   <form action="/add" method="post">
     <div class="input-area">
-      <input type="text" name="city" placeholder="Search by city" />
-      <button class="search-button" type="submit">Search</button>
+      <input
+        class="search-input"
+        type="text"
+        name="city"
+        placeholder="Search by city"
+      />
+      <button class="search-button" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </form>
 </header>
+
+<div class="weather-display">
+  <% if (locals.data) { %>
+  <h2 class="city"><%= city %></h2>
+  <p class="time"><%= time %></p>
+  <div class="temp-info">
+    <img
+      src="https://openweathermap.org/img/wn/<%= icon %>@2x.png"
+      alt="weather-icon"
+    />
+    <span class="temp"><%= tempMetric %>&deg</span>
+    <div class="temp-scales">
+      <p class="active">C</p>
+      <p>F</p>
+    </div>
+  </div>
+  <h3 class="description"><%= description%></h3>
+  <div class="additional-info1">
+    <p>Feels Like: <%= feelsLike %>&deg</p>
+    <p class="wind">Wind: <%=windMetric%>km/h</p>
+    <p class="visibility">Visibility: <%= visibility %> km</p>
+  </div>
+
+  <div class="additional-info2">
+    <p>Precipitation: <%= precipitation %> %</p>
+    <p class="humidity">Humidity: <%=humidity%>%</p>
+    <p>Dew point: <%= devPoint %>&deg</p>
+  </div>
+</div>
+<div class="weekly-forecast">
+  <h2>Daily</h2>
+  <div class="weekly-forecast-display">
+    <% data.daily.forEach(day =>{ %>
+    <div class="daily-forecast">
+      <p>
+        <%= new Date (day.dt * 1000).toLocaleString(undefined, {timeZone:
+        day.timezone, weekday:"short"}); %>
+      </p>
+      <img
+        src="https://openweathermap.org/img/wn/<%= day.weather[0].icon %>@2x.png"
+        alt="weather-icon"
+      />
+      <div class="min-max">
+        <p class="max-temp"><%= Math.round(day.temp.max)%> &deg;</p>
+        <p><%= Math.round(day.temp.min)%> &deg;</p>
+      </div>
+      <div class="daily-description">
+        <p>
+          <%= day.weather[0].description.split(" ").map( (word) =>
+          word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() ).join(" "); %>
+        </p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<% } else {%>
+  <p><%= locals.error %></p>
+  <% } %>
+
+
 <%- include('partials/footer.ejs') %>

@@ -55,8 +55,9 @@ app.post("/add", async (req, res) => {
       data: cityResponse.data,
       icon: cityResponse.data.current.weather[0].icon,
       tempMetric: Math.round(cityResponse.data.current.temp),
+      tempImperial:  Math.round(Math.round(cityResponse.data.current.temp)* 9 / 5 + 32),
       humidity: cityResponse.data.current.humidity,
-      windMetric: (cityResponse.data.current.wind_speed * 3.6).toFixed(1),
+      windMetric: Math.round((cityResponse.data.current.wind_speed * 3.6)),
       city: toTitleCase(city),
       description: toTitleCase(
         cityResponse.data.current.weather[0].description

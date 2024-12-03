@@ -25,10 +25,11 @@
       src="https://openweathermap.org/img/wn/<%= icon %>@2x.png"
       alt="weather-icon"
     />
-    <span class="temp"><%= tempMetric %>&deg</span>
+    <span class="temp-cel"><%= tempMetric %>&deg</span>
+    <span class="temp-far hidden"><%= tempImperial %>&deg</span>
     <div class="temp-scales">
-      <p class="active">C</p>
-      <p>F</p>
+      <p class="active cel">C</p>
+      <p class="far">F</p>
     </div>
   </div>
   <h3 class="description"><%= description%></h3>
@@ -74,6 +75,4 @@
 <% } else {%>
   <p><%= locals.error %></p>
   <% } %>
-
-
 <%- include('partials/footer.ejs') %>

@@ -83,6 +83,12 @@ Weather Display Styling */
   font-size: 4.5rem;
 }
 
+/* Hide farenheit or celzius */
+
+.hidden {
+  display: none;
+}
+
 .temp-scales {
   display: flex;
   flex-direction: column;

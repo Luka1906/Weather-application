@@ -5,14 +5,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
-  color: #f0f0f0;
 }
 
 body {
   background: url("../images/background2.png");
   height: 100vh;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  color: #fffafa;
 }
 
 /* Search Input Area Styling */
@@ -26,6 +27,11 @@ header {
   position: relative;
   top: 5rem;
   gap: 1rem;
+}
+
+header h1 {
+  font-size: 2.3rem;
+  color: black;
 }
 
 .input-area {
@@ -53,6 +59,7 @@ header {
   color: black;
   outline: none;
 }
+
 /* 
 Weather Display Styling */
 
@@ -61,14 +68,18 @@ Weather Display Styling */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 33rem;
+  padding: 1rem 0;
   gap: 0.8rem;
+  background: rgb(28, 28, 28);
+  opacity: 0.75;
+  border-radius: 8px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease;
+  font-weight: 500;
 
   margin: 7rem auto;
-}
-
-.city {
-  font-size: 1.7rem;
 }
 
 .temp-info {
@@ -80,7 +91,7 @@ Weather Display Styling */
 }
 
 .temp-info span {
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 /* Hide farenheit or celzius */
@@ -107,7 +118,6 @@ Weather Display Styling */
 
 .description {
   font-weight: 600;
-  font-size: 1.4rem;
 }
 
 .additional-info1,
@@ -116,43 +126,51 @@ Weather Display Styling */
   width: 100%;
   gap: 2rem;
   justify-content: center;
+  font-size: 0.9rem;
 }
 
 /* Weekly forecast styling */
-.weekly-forecast {
-  padding: 0 2rem;
-}
-.weekly-forecast h2 {
-  position: relative;
-
-  bottom: 1rem;
-}
-
-.weekly-forecast-display {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .daily-forecast {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.min-max {
+.weekly-forecast h2 {
+  margin: 1.2rem 0.5rem;
+}
+
+.weekly-forecast-display {
   display: flex;
-  gap: 0.5rem;
   justify-content: center;
   align-items: center;
 }
 
-.max-temp {
-  font-size: 1.6rem;
-  font-weight: 600;
+.min-max {
+  
+  text-align: center;
+
 }
-.daily-description {
-    position: relative;
-    top: 0.4rem;
+
+.max-temp {
+ font-weight:800;
+ color: white;
+}
+
+.temp-icon {
+  height: 63px;
+  width: 63px;
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  height: 15rem;
+  align-items: center;
+  color: #cc0000;
+  font-weight: 700;
+  font-size: 1.1rem;
 }

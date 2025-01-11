@@ -33,9 +33,12 @@
   </div>
   <h3 class="description"><%= description%></h3>
   <div class="additional-info1">
-    <p>Feels Like: <%= feelsLike %>&deg</p>
-    <p class="wind">Wind: <%=windMetric%>km/h</p>
-    <p class="visibility">Visibility: <%= visibility %> km</p>
+    <p class="feels-cel">Feels Like: <%= feelsLikeMetric %>&deg</p>
+    <p class="feels-fa hidden">Feels Like: <%= feelsLikeImperial %>&deg</p>
+    <p class="wind wind-km">Wind: <%=windMetric%>km/h</p>
+    <p class="wind wind-mph hidden">Wind: <%=windImperial%>mph</p>
+    <p class="visibility vis-km">Visibility: <%= visibilityMetric %> km</p>
+    <p class="visibility vis-mi hidden">Visibility: <%= visibilityImperial %> mi</p>
   </div>
 
   <div class="additional-info2">
@@ -58,8 +61,10 @@
           class="temp-icon"
         />
         <div class="min-max">
-          <p class="max-temp"><%= Math.round(day.temp.max)%> &deg;</p>
-          <p><%= Math.round(day.temp.min)%> &deg;</p>
+          <p class="max-temp max-cel"><%= Math.round(day.temp.max)%> &deg;</p>
+          <p class="max-temp max-far hidden"><%= Math.round(day.temp.max * 9/5) + 32%> &deg;</p>
+          <p class="min-cel"><%= Math.round(day.temp.min)%> &deg;</p>
+          <p class="min-far hidden"><%= Math.round(day.temp.min * 9/5) + 32%> &deg;</p>
         </div>
       </div>
       <% }) %>

@@ -55,23 +55,32 @@ app.post("/add", async (req, res) => {
       data: cityResponse.data,
       icon: cityResponse.data.current.weather[0].icon,
       tempMetric: Math.round(cityResponse.data.current.temp),
-      tempImperial:  Math.round(Math.round(cityResponse.data.current.temp)* 9 / 5 + 32),
+      tempImperial: Math.round(
+        (Math.round(cityResponse.data.current.temp) * 9) / 5 + 32
+      ),
       humidity: cityResponse.data.current.humidity,
-      windMetric: Math.round((cityResponse.data.current.wind_speed * 3.6)),
+      windMetric: Math.round(cityResponse.data.current.wind_speed * 3.6),
+      windImperial: Math.round(
+        (cityResponse.data.current.wind_speed * 3.6) / 1.609
+      ),
       city: toTitleCase(city),
       description: toTitleCase(
         cityResponse.data.current.weather[0].description
       ),
       time: localCurrentTime.format(),
-      feelsLike: Math.round(cityResponse.data.current.feels_like),
-      visibility: Math.round(cityResponse.data.current.visibility) / 1000,
+      feelsLikeMetric: Math.round(cityResponse.data.current.feels_like),
+      feelsLikeImperial: Math.round((cityResponse.data.current.feels_like * 9) / 5 + 32),
+      visibilityMetric: Math.round(cityResponse.data.current.visibility) / 1000,
+      visibilityImperial: Math.round(
+        cityResponse.data.current.visibility / 1000 / 1.609
+      ),
+
       precipitation: Math.round(cityResponse.data.hourly[0].pop * 10),
       devPoint: Math.round(cityResponse.data.current.dew_point),
     });
   } catch (error) {
     const err = "Location you entered does not exist. Please try again! ";
-    res.render("index.ejs", {error: err})
-
+    res.render("index.ejs", { error: err });
   }
 });
 // const apiKey = process.env.API_KEY;
